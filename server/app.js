@@ -1,17 +1,17 @@
 const express = require('express');
 const bodyParser= require('body-parser');
 const cors= require('cors');
-
+const gets = require('./routes/api/get.js');
 const app = express();
 
+
 app.use(bodyParser.json());
-app.use (cors());
+app.use (cors()); 
+app.use('/', gets);
 
 
-const posts = require('./routes/api/post.js');
 
-app.use('/', posts);
 
-const port = process.env.PORT || 8000;
-
+// running server
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Running on ${port}`));
